@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+{%load staticfiles %}
+<h1> {{ form.title }} </h1>
+<form action={% url form.action %} method="post" enctype="multipart/form-data">  {% csrf_token %} 
+<div class="row">
+  <div class="col-xs-4">
+    <p>Данный расчет предназначен для проверки на прочность для переукладки газопровода и расчет его балластировки.
+    Для использования скачиваем файл шаблона данных для расчета <a href={% static "dat.txt" %}>dat.txt</a>.
+    Редактируем его под свои условия прокладки и передаем обратно на сервер через
+    кнопку обзор, затем жмем расчитать и получаем результаты в виде графиков, которые
+    вставляем в отчет.
+    </p>  
+  </div>
+  <div class="col-xs-8">
+    <table class="table">
+    {{ form.as_table }}
+    {% for k,v in form.ans %}
+    <tr><th><label>{{ v }}</label></th><td><label>{{ k }} </label></td></tr>
+    {% endfor %}
+    </table>
+    <input type="submit" value="Расчет" />
+    </form>
+  </div>
+</div>
+    {% for k in fn %}
+        <img src=/media/{{ k }} alt="" title=""/>
+    {% endfor %}
+{% endblock %}

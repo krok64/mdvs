@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{%block oglav %}
+{% include "projmenu.html" %}
+{% endblock %}
+
+{% block content %}
+<h1>Невозможно удалить</h1>
+<p class="bg-danger"> {{ name }} используется в следующих случаях: 
+{% for k in use_list %}
+{{ k.name }}
+{% endfor %}
+</p>
+{% endblock %}

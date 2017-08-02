@@ -1,0 +1,316 @@
+# -*- coding: utf-8 -*-
+
+from django.http import HttpResponse
+from django.shortcuts import render, redirect
+from math import pi
+from string import split
+from tempfile import NamedTemporaryFile
+from gen.models import *
+from docx import *
+
+#Формат вывода
+AreaFormat="{:.2f}"
+MassaFormat="{:.1f}"
+ShtukFormat="{:.0f}"
+MetrFormat="{:.1f}"
+
+def gen_VR(request, spec_id):
+    s=Spec.objects.get(pk=spec_id)
+    p=ItemList.objects.filter(spec=s)
+
+    #тут хранится новая ведомость
+    l=[]
+
+    #Перевод строки
+    CR="$$$"
+
+    #Список деталей по которым идет газ
+    GasList=['Тройник','Переход','Отвод','Заглушка','Днище']
+
+    #Инструкция
+    l.append(("Инструкция по доработке текста: Выбрать все, установить размер шрифта 14, Абзац-межстрочный интервал=точно 22.8 пт, Заменить $$$ на ^l, Выбрать колонки Ед.Изм. и Количество и выровнять их по центру, Удалить эту строку",))
+    
+    #Описание проекта
+    l.append((s.comment.encode('utf-8'),))
+
+    #подземная арматура с заводской изоляцией
+    pc=p.filter(item__type__name='Кран',item__ust=UST_POD,item__zav_is=True)
+    if pc:
+        l.append(("Монтаж подземной арматуры с заводской изоляцией:",))
+        for k in pc:
+            l.append(('-'+k.item.name.encode('utf-8'), "шт"+CR+"кг", sf(k.numPod)+CR+kf(k.numPod*k.item.m)))
+
+    #монтаж монтажных изделий с заводской изоляцией
+    pc=p.filter(item__type__name='Монтажные',item__zav_is=True)
+    if pc:
+        l.append(("Монтаж с заводской изоляцией:",))
+        for k in pc:
+            l.append(('-'+k.item.name.encode('utf-8'), "шт"+CR+"кг", sf(k.numAll)+CR+kf(k.numAll*k.item.m)))
+
+    #подземные трубопроводы и фасонные части с изоляцией, группировать по Ду, по убыванию
+    #для каждого ду отдельно суммируем общую длину
+    flagTitle=False
+    for dy in reversed(sorted(DYD.keys())):
+        summ=0
+        flagTruba=False
+        listIdx=0
+        for d in DYD[dy]:
+            pc=p.filter(item__type__name='Труба', item__d=d, item__zav_is=True,numAll__gt=0)
+            if pc:
+                flagTruba=True
+                if not flagTitle:
+                    flagTitle=True
+                    l.append(('Монтаж с заводской изоляцией:',))
+                    l.append(['трубопроводов Ду '+ str(dy) + ' мм в том числе:','м'])
+                else:
+                    l.append(['то же, трубопроводов Ду '+ str(dy) + ' мм в том числе:','м'])
+                listIdx=len(l)
+                for k in pc:
+                    l.append(('-'+k.item.name.encode('utf-8')+' '+k.item.tu.name.encode('utf-8'),
+                        'м'+CR+'кг',
+                        mf(k.numPod)+CR+kf(k.numPod*k.item.m)))
+                    summ+=k.numPod
+        for d in DYD[dy]:
+            pc=p.filter(item__type__name__in=GasList, item__d=d, item__zav_is=True, numAll__gt=0)
+            if pc:
+                if not flagTitle:
+                    flagTitle=True
+                    l.append(('Монтаж с заводской изоляцией:',))
+                    l.append(['стальных фасонных частей Ду '+ str(dy) + ' мм в том числе:','м'])
+                    listIdx=len(l)
+                elif not flagTruba:
+                    l.append(['то же, стальных фасонных частей Ду '+ str(dy) + ' мм в том числе:','м'])
+                    listIdx=len(l)
+                for k in pc:
+                    l.append(('-'+k.item.name.encode('utf-8'),'шт'+CR+'кг', sf(k.numPod)+CR+kf(k.numPod*k.item.m)))
+                    summ+=k.numPod*k.item.dlina/1000
+        if summ>0:
+            l[listIdx-1].append(mf(summ))
+
+    #изоляция сварных стыков ТУМами
+    pc=p.filter(item__d__gt=0,item__zav_is=True)
+    if pc:
+        l.append(("Изоляция сварных стыков ТУМами:",))
+        DList={}
+        for k in pc:
+            DList[k.item.d]=1
+        for i in sorted(DList.keys()):
+            l.append((str(i), "компл.", "XXX"))
+
+    # подземные трубопроводы без изоляции
+    # в цикле перебираем все ДУ для труб и для фасонных частей начиная с максимальных
+    # и выбираем подземные трубы и фасонину без изоляции для каждого Ду
+    flagTitle=False
+    for dy in reversed(sorted(DYD.keys())):
+        flagTruba=False
+        summ=0
+        listIdx=0
+        for d in DYD[dy]:
+            pc=p.filter(item__type__name='Труба', item__d=d, item__zav_is=False,numPod__gt=0)
+            if pc:
+                flagTruba=True
+                if not flagTitle:
+                    flagTitle=True
+                    l.append(('Монтаж, укладка и изоляция подземных',))
+                    l.append(['трубопроводов Ду '+ str(dy) + ' мм в том числе:','м'+CR+'м2'])
+                else:
+                    l.append(['то же, трубопроводов Ду '+ str(dy) + ' мм в том числе:','м'+CR+'м2'])
+                listIdx=len(l)
+                for k in pc:
+                    l.append(('-'+k.item.name.encode('utf-8')+' '+k.item.tu.name.encode('utf-8'),
+                        'м'+CR+'кг',
+                        mf(k.numPod)+CR+kf(k.numPod*k.item.m)))
+                    summ+=k.numPod
+        for d in DYD[dy]:
+            pc=p.filter(item__type__name__in=GasList, item__d=d, item__zav_is=False, numPod__gt=0)
+            if pc:
+                if not flagTitle:
+                    flagTitle=True
+                    l.append(('Монтаж, укладка и изоляция подземных',))
+                    l.append(['стальных фасонных частей Ду '+ str(dy) + ' мм в том числе:','м'+CR+'м2'])
+                    listIdx=len(l)
+                elif not flagTruba:
+                    l.append(['то же, стальных фасонных частей Ду '+ str(dy) + ' мм в том числе:','м''м'+CR+'м2'])
+                    listIdx=len(l)
+                for k in pc:
+                    l.append(('-'+k.item.name.encode('utf-8'),
+                        'шт'+CR+'кг',
+                        sf(k.numPod)+CR+kf(k.numPod*k.item.m)))
+                    summ+=k.numPod*k.item.dlina/1000
+        if summ>0:
+            l[listIdx-1].append(mf(summ)+CR+af(AreaTrub(DYD[dy][0]/1000.0,summ)))
+
+    #Надземная арматура
+    pc=p.filter(item__type__name='Кран',item__ust=UST_NAD)
+    if pc:
+        l.append(("Монтаж и покрытие 1 слоем эпоксидной грунт–эмали ИЗОЛЭП-mastic и 1 слоем эмали ПОЛИТОН-УР(УФ) надземной арматуры:",))
+        for k in pc:
+            l.append(('-'+k.item.name.encode('utf-8'),
+                "шт"+CR+"кг"+CR+"м3",
+                sf(k.numNad)+CR+
+                kf(k.numNad*k.item.m)+CR+
+                af(k.numNad*KranArea[k.item.dy])))
+
+    # надземные трубопроводы без изоляции
+    # в цикле перебираем все ДУ для труб и для фасонных частей начиная с максимальных
+    # и выбираем подземные трубы и фасонину без изоляции для каждого Ду
+    flagTitle=False
+    for dy in reversed(sorted(DYD.keys())):
+        flagTruba=False
+        summ=0
+        listIdx=0
+        for d in DYD[dy]:
+            pc=p.filter(item__type__name='Труба', item__d=d, item__zav_is=False,numNad__gt=0)
+            if pc:
+                flagTruba=True
+                if not flagTitle:
+                    flagTitle=True
+                    l.append(('Монтаж и покрытие 1 слоем эпоксидной грунт–эмали ИЗОЛЭП-mastic и 1 слоем эмали ПОЛИТОН-УР(УФ) надземных',))
+                    l.append(['трубопроводов Ду '+ str(dy) + ' мм в том числе:','м'+CR+'м2'])
+                else:
+                    l.append(['то же, трубопроводов Ду '+ str(dy) + ' мм в том числе:','м'+CR+'м2'])
+                listIdx=len(l)
+                for k in pc:
+                    l.append(('-'+k.item.name.encode('utf-8')+' '+k.item.tu.name.encode('utf-8'),
+                        'м'+CR+'кг',
+                        mf(k.numNad)+CR+kf(k.numNad*k.item.m)))
+                    summ+=k.numNad
+        for d in DYD[dy]:
+            pc=p.filter(item__type__name__in=GasList, item__d=d, item__zav_is=False, numNad__gt=0)
+            if pc:
+                if not flagTitle:
+                    flagTitle=True
+                    l.append(('Монтаж и покрытие 1 слоем эпоксидной грунт–эмали ИЗОЛЭП-mastic и 1 слоем эмали ПОЛИТОН-УР(УФ) надземных',))
+                    l.append(['стальных фасонных частей Ду '+ str(dy) + ' мм в том числе:','м'+CR+'м2'])
+                    listIdx=len(l)
+                elif not flagTruba:
+                    l.append(['то же, стальных фасонных частей Ду '+ str(dy) + ' мм в том числе:','м'+CR+'м2'])
+                    listIdx=len(l)
+                for k in pc:
+                    l.append(('-'+k.item.name.encode('utf-8'),
+                        'шт'+CR+'кг',
+                        sf(k.numNad)+CR+kf(k.numNad*k.item.m)))
+                    summ+=k.numNad*k.item.dlina/1000
+        if summ>0:
+            l[listIdx-1].append(mf(summ)+CR+af(AreaTrub(DYD[dy][0]/1000.0,summ)))
+
+    #Фланцы
+    pc=p.filter(item__type__name='Фланец')
+    if pc:
+        l.append(("Монтаж и покрытие 1 слоем эпоксидной грунт–эмали ИЗОЛЭП-mastic и 1 слоем эмали ПОЛИТОН-УР(УФ) фланцев:",))
+        for k in pc:
+            FlanL,FlanD=Flanec7[k.item.dy]
+            l.append(('-'+k.item.name.encode('utf-8'),
+                "шт"+CR+"кг"+CR+"м3",
+                sf(k.numAll)+CR+
+                kf(k.numAll*k.item.m)+CR+
+                af(k.numAll*AreaTrub(FlanD/1000.0,FlanL/1000.0))))
+
+    #монтаж монтажных изделий без заводской изоляцией
+    pc=p.filter(item__type__name='Монтажные',item__zav_is=False)
+    if pc:
+        l.append(("Монтаж:",))
+        for k in pc:
+            l.append(('-'+k.item.name.encode('utf-8'), "шт"+CR+"кг", sf(k.numAll)+CR+kf(k.numAll*k.item.m)))
+
+    #Предварительный подогрев стыков при сварке на трассе газопровода
+    #принимаем что все стыки деталей идут с трубой (если это не так, то лишние стыки надо руками удалить из общего числа)
+    #принимаем стыки кранов по ДУ - толщину уточнить после
+    alls={}
+    pc=p.filter(item__type__name='Тройник')
+    if pc:
+        for k in pc:
+           dinc(alls,str(k.item.d)+"QQQ"+str(k.item.s),2*k.numAll)
+           dinc(alls,str(k.item.d2)+"QQQ"+str(k.item.s2),k.numAll)
+    pc=p.filter(item__type__name='Переход')
+    if pc:
+        for k in pc:
+           dinc(alls,str(k.item.d)+"QQQ"+str(k.item.s),k.numAll)
+           dinc(alls,str(k.item.d2)+"QQQ"+str(k.item.s2),k.numAll)
+    pc=p.filter(item__type__name='Отвод')
+    if pc:
+        for k in pc:
+           dinc(alls,str(k.item.d)+"QQQ"+str(k.item.s),2*k.numAll)
+    pc=p.filter(item__type__name__in=['Заглушка','Днище'])
+    if pc:
+        for k in pc:
+           dinc(alls,str(k.item.d)+"QQQ"+str(k.item.s),k.numAll)
+    pc=p.filter(item__type__name__in=['Кран','Фланец'])
+    if pc:
+        for k in pc:
+           dinc(alls,"ДуQQQ"+str(k.item.dy),2*k.numAll)
+
+    l.append(("Предварительный подогрев стыков при сварке на трассе газопровода:",))
+    for k in alls.keys():
+        d,s=split(k,"QQQ")
+        l.append((d+"x"+s,"стык",str(alls[k])))
+
+    document=Document("templateVR.docx")
+    t1=document.tables[0]
+    i=0
+    for k in l:
+        if k[0]:
+            t1.cell(i,1).text=k[0].decode('utf-8')
+        if len(k)>1:
+            t1.cell(i,2).text=k[1].decode('utf-8')
+        if len(k)>2:
+            t1.cell(i,5).text=k[2].decode('utf-8')
+        i=i+1
+        t1.add_row()
+    f=NamedTemporaryFile(delete=False)
+    f.close()
+    document.save(f.name)
+    f=open(f.name,'rb')
+    response = HttpResponse(f, content_type='text/html')
+    response['Content-Disposition'] = 'attachment; filename="VR.docx"'
+    return response
+
+#если в словаре d есть значение с ключем k оно увеличивается на v иначе создается значение с ключем k и значением v
+def dinc(d,k,v):
+    if not k in d:
+        d[k]=v
+    else:
+        d[k]+=v
+
+def sf(i):
+    return ShtukFormat.format(i)
+
+def af(i):
+    return AreaFormat.format(i)
+
+def kf(i):
+    return MassaFormat.format(i)
+
+def mf(i):
+    return MetrFormat.format(i)
+
+# площадь трубы м2. параметры задавать в метрах
+def AreaTrub(d,l):
+    return l*pi*d
+
+def tohtmlteg(s):
+    data='<html><table>'
+    for k in s:
+        data+='<tr>'
+        for j in k:
+            data+=td(j)
+        data+='</tr>'
+    data+='</table></html>'
+    return data
+
+def tohtml(s):
+    of=open("vr_file.html","w")
+    of.write('<html><table>')
+    for k in s:
+        of.write('<tr>')
+        for j in k:
+            of.write(td(j))
+        of.write('</tr>')
+    of.write('</table></html>')
+    of.close()
+
+def td(s):
+    return '<td>'+s+'</td>'
+
+def tr(s):
+    return '<tr>'+s+'</tr>'

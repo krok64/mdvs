@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html ng-app="myApp" lang="ru">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+{% load staticfiles %}
+<link href={% static "css/bootstrap.min.css" %} rel="stylesheet">
+<script type="text/javascript" src={% static "jquery-1.11.0.min.js" %}></script>
+<script src={% static "js/bootstrap.min.js" %}></script>
+<link type="text/css" rel="stylesheet" media="all" href={% static "common.css" %} />
+{% block head %} {% endblock %}
+<title> {% block title %} {{ form.title }} {% endblock %} </title>
+</head>
+<body>
+<div class="container" id="oglav">
+<a class="btn btn-primary" role="button" href="{% url 'main' %}">Оглавление</a>
+{% block oglav %}
+{% endblock oglav %}
+</div>
+<div class="container" id="content">
+{% block content %} {% endblock %}
+</div>
+{% include "counter.html" %}
+</body>
+</html>

@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{%block oglav %}
+<a class="btn btn-primary" role="button" href="/pipe/">Перейти к выбору трасс</a>
+{% endblock %}
+
+{% block content %}
+<h1> {{ form.title }} </h1>
+<div class="row">
+  <div class="col-xs-3">
+    <h2>Итого по трассе:</h2>
+    <table class="table">
+    {% if form.ans %}
+    {% for k,v in form.ans %}
+      <tr><th><label>{{ v }}</label></th><td><label>{{ k }} </label></td></tr>
+    {% endfor %}
+    {% endif %}
+    </table>
+  </div>
+  <div class="col-xs-6">
+    <h2>Существующие объекты на трассе:</h2>
+    {% if p %}
+    <table class="table">
+      <tr><th>Пикетаж</th><th>Длина, м</th><th>Число стыков</th><th>Коментарий</th></tr>
+      {% for k in p %}
+      <tr><td>{{ k.piket }}</td><td>{{ k.l }}</td><td>{{ k.n }}</td><td>{{ k.comment }}</td><td><a class="btn btn-warning btn-xs" role="button" href="/pipe/obj/{{ pipe_id }}/ed/{{ k.id }}/">Изменить</a></td><td><a class="btn btn-danger btn-xs" role="button" href="/pipe/obj/{{ pipe_id }}/del/{{ k.id }}/">Удалить</a></td></tr>
+      {% endfor %}
+    </table>
+    {% endif %}
+  </div>
+  <div class="col-xs-3">
+    <h2>Добавить объект на трассу</h2>
+    <form action={{form.action}} method="post">  {% csrf_token %} 
+    <table class="table">
+    {{ form.as_table }}
+    </table>
+    <input type="submit" value="Добавить объект" />
+    </form>
+  </div>
+</div>
+{% endblock %}

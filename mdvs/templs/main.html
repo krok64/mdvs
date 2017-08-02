@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<title>Оглавление</title>
+<meta charset="utf-8">
+{% load staticfiles %}
+<link type="text/css" rel="stylesheet" media="all" href={% static "main.css" %} />
+</head>
+<body>
+<div class="header">
+<h1>Оглавление</h1>
+</div>
+<hr/>
+<ul>
+{% for v, k in l %}
+<li><a href={% url k %}>{{v}}</a></li>
+{% endfor %}
+</ul>
+{% include "counter.html" %}
+</body>
+</html>

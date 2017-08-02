@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{%block head %}
+{% load staticfiles %}
+<link href={% static "pagination.css" %} rel="stylesheet">
+{% endblock %}
+
+{%block oglav %}
+{% include "projmenu.html" %}
+{% endblock %}
+
+{% block content %}
+    <h1>Список предприятий <a class="btn btn-success btn-xs" role="button" href={% url 'zavodcreate' %}>Создать новое</a></h1>
+    {% if p %}
+    <table class="table">
+    {% for k in p %}
+    <tr><td>{{ k.name }}</td><td><a class="btn btn-warning btn-xs" role="button" href={% url 'zavodupdate' k.id %}>Изменить</a></td><td><a class="btn btn-danger btn-xs" role="button" href={% url 'zavoddelete' k.id %}>Удалить</a></td></tr>
+    {% endfor %}
+    </table>
+    {% endif %}
+    {% if paginator.num_pages > 1 %}
+    	<div id="pagination">
+    		{% if page_obj.has_previous %}
+    			<a href="{% url "zavod" %}?page={{ page_obj.previous_page_number }}">&lt;</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+    	 	{% endif %}	
+    	 		{% for pn in paginator.page_range %}
+    	 			{% if not forloop.first %}
+    	 				&nbsp;&nbsp;|&nbsp;&nbsp;
+    	 			{% endif %}
+    	 			{% if page_obj.number != pn %}
+    	 				<a href="{% url "zavod" %}?page={{ pn }}">
+    	 			{% endif %}
+    	 			{{ pn }}
+    	 			{% if page_obj.number != pn %}
+    	 				</a>
+    	 			{% endif %}
+    	 		{% endfor %}
+    		{% if page_obj.has_next %}
+    			&nbsp;&nbsp;|&nbsp;&nbsp;<a href="{% url "zavod" %}?page={{ page_obj.next_page_number }}">&gt;</a>
+    	 	{% endif %}	
+    	</div>
+    {% endif %}
+  <!--
+  <div class="col-xs-4">
+    <h1>Создать</h1>
+    <form action={% url 'zavod' %} method="post">  {% csrf_token %} 
+    <table class="table">
+    {{ form.as_table }}
+    </table>
+    <input type="submit" value="Добавить завод" />
+    </form>
+  </div>
+  -->
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{%block oglav %}
+{% include "projmenu.html" %}
+{% endblock %}
+
+{% block content %}
+<div class="row">
+  <div class="col-xs-8">
+    <h1>Деталь</h1>
+    <form action="" method="post">  {% csrf_token %} 
+    <table class="table">
+    {{ form.as_table }}
+    </table>
+    <input type="submit" value="Изменить" />
+    </form>
+  </div>
+  <div class="col-xs-4">
+    <h1>Используется в следующих проектах:</h1>
+    {% for k in specs %}
+      <li><a href="/proj/select/{{ k.spec.id }}/">{{ k.spec.name }}</a></li>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

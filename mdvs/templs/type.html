@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{%block oglav %}
+{% include "projmenu.html" %}
+{% endblock %}
+
+{% block content %}
+<div class="row">
+  <div class="col-xs-6">
+    <h1>Список типов деталей</h1>
+    {% if p %}
+    <table class="table">
+    {% for k in p %}
+    <tr><td>{{ k.name }}</td><td><a class="btn btn-warning btn-xs" role="button" href={% url 'show_TypeEd' k.id %}>Изменить</a></td><td><a class="btn btn-danger btn-xs" role="button" href={% url 'show_Type' k.id %}>Удалить</a></td></tr>
+    {% endfor %}
+    </table>
+    {% endif %}
+  </div>
+  <div class="col-xs-6">
+    <h1>Новый тип</h1>
+    <form action={% url 'show_Type' %} method="post">  {% csrf_token %} 
+    <table class="table">
+    {{ form.as_table }}
+    </table>
+    <input type="submit" value="Добавить тип" />
+    </form>
+  </div>
+</div>
+{% endblock %}

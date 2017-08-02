@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{%block oglav %}
+{% include "projmenu.html" %}
+{% endblock %}
+
+{% block content %}
+<div class="row">
+  <div class="col-xs-8">
+    <h1>Список ТУ и ГОСТ на детали</h1>
+    {% if p %}
+    <table class="table">
+    {% for k in p %}
+    <tr><td>{{ k.name }}</td><td>{{ k.type }}</td><td>{{ k.zavod }}</td><td><a class="btn btn-warning btn-xs" role="button" href={% url 'show_TUEd' k.id %}>Изменить</a></td><td><a class="btn btn-danger btn-xs" role="button" href={% url 'show_TU' k.id %}>Удалить</a></td></tr>
+    {% endfor %}
+    </table>
+    {% endif %}
+  </div>
+  <div class="col-xs-4">
+    <h1>Создать новый</h1>
+    <form action={% url 'show_TU' %} method="post">  {% csrf_token %} 
+    <table class="table">
+    {{ form.as_table }}
+    </table>
+    <input type="submit" value="Добавить" />
+    </form>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{%block oglav %}
+{% include "projmenu.html" %}
+{% endblock %}
+
+{% block content %}
+<div class="row">
+  <div class="col-xs-8">
+    <h1>Выберите проект для работы:</h1>
+    {% if p %}
+    <table class="table table-striped">
+    {% for k in p %}
+      <tr><th><a href="/proj/select/{{ k.id }}/">{{ k.name }}</a></th><td>{{ k.comment }}</td><td><a class="btn btn-warning btn-xs" role="button" href="/proj/edit/{{ k.id }}/">Изменить</a></td><td><a class="btn btn-warning btn-xs" role="button" href="/proj/copy/{{ k.id }}/">Копировать</a></td><td><a class="btn btn-danger btn-xs" role="button" href="/proj/delete/{{ k.id }}/">Удалить</a></td></tr>
+    {% endfor %}
+    </table>
+    {% endif %}
+  </div>
+  <div class="col-xs-4">
+    <h1>Создать новый проект</h1>
+    <form action={% url 'show_Proj' %} method="post">  {% csrf_token %} 
+    <table class="table">
+    {{ form.as_table }}
+    </table>
+    <input type="submit" value="Добавить новый проект" />
+    </form>
+  </div>
+</div>
+{% endblock %}

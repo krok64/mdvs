@@ -1,0 +1,1088 @@
+changeset:   134:c7b369b65eff
+tag:         tip
+user:        krok
+date:        Thu Dec 24 15:45:10 2015 +0300
+files:       .hgtags
+description:
+Added tag true-django-filter for changeset 502818384d82
+
+
+changeset:   133:502818384d82
+tag:         true-django-filter
+user:        krok
+date:        Thu Dec 24 15:43:19 2015 +0300
+files:       db gen/genvr.py gen/urls.py gen/views.py mdvs/templs/item.html mdvs/templs/proj.html mdvs/templs/projitem.html todo
+description:
+work
+
+
+changeset:   132:6b58e594f6e9
+user:        krok
+date:        Thu Dec 24 15:43:07 2015 +0300
+files:       .hgtags
+description:
+Added tag django-filter for changeset d7b0c5afe66e
+
+
+changeset:   131:d7b0c5afe66e
+tag:         django-filter
+user:        krok
+date:        Tue Dec 22 16:57:23 2015 +0300
+files:       db gen/biur.py gen/genvr.py todo
+description:
+work
+
+
+changeset:   130:b8868d84b5a7
+user:        krok
+date:        Mon Dec 21 16:49:44 2015 +0300
+files:       db gen/biur.py gen/genvr.py
+description:
+SO - dont work
+
+
+changeset:   129:62155559d340
+user:        krok
+date:        Fri Dec 18 16:40:39 2015 +0300
+files:       gen/biur.py todo
+description:
+work
+
+
+changeset:   128:048265ac724f
+user:        krok
+date:        Thu Dec 17 16:48:31 2015 +0300
+files:       db gen/genvr.py todo
+description:
+work
+
+
+changeset:   127:43fb1d58d4b0
+user:        krok
+date:        Wed Dec 16 16:28:45 2015 +0300
+files:       db gen/genvr.py gen/views.py gost24950/views.py mdv_u/utils.py runmdv.cmd todo
+description:
+work
+
+
+changeset:   126:af53689086e0
+user:        krok
+date:        Thu Oct 15 16:53:45 2015 +0300
+files:       gost24950/views.py
+description:
+work
+
+
+changeset:   125:a3102a87e05f
+user:        krok
+date:        Thu Oct 08 16:28:13 2015 +0300
+files:       gost24950/views.py
+description:
+work
+
+
+changeset:   124:4a4a29c23209
+user:        krok
+date:        Mon Sep 28 08:12:01 2015 +0300
+files:       db
+description:
+work
+
+
+changeset:   123:dd8bbb98710a
+user:        krok
+date:        Fri Aug 21 08:09:34 2015 +0300
+files:       db gen/views.py
+description:
+work
+
+
+changeset:   122:72f5c8f9c7c5
+user:        krok
+date:        Mon Aug 17 16:54:14 2015 +0300
+files:       gen/views.py todo
+description:
+work
+
+
+changeset:   121:9cdf44944d83
+user:        krok
+date:        Fri Aug 14 16:44:16 2015 +0300
+files:       gost24950/views.py mdv_u/__init__.py mdv_u/utils.py
+description:
+work
+
+
+changeset:   120:7586aa08751f
+user:        krok
+date:        Thu Aug 13 16:41:52 2015 +0300
+files:       db gen/views.py gost24950/views.py mdvs/urls.py
+description:
+work
+
+
+changeset:   119:af57b53f4294
+user:        krok
+date:        Wed Aug 12 16:45:17 2015 +0300
+files:       db gen/genvr.py gen/views.py
+description:
+work
+
+
+changeset:   118:571c89f7dd81
+user:        krok
+date:        Tue Aug 11 16:49:58 2015 +0300
+files:       db
+description:
+work
+
+
+changeset:   117:375c48a900bc
+user:        krok
+date:        Mon Aug 10 16:50:40 2015 +0300
+files:       gen/models.py gost24950/views.py todo
+description:
+work
+
+
+changeset:   116:2097174ea717
+user:        krok
+date:        Mon Aug 03 16:50:53 2015 +0300
+files:       db todo
+description:
+work
+
+
+changeset:   115:4a1732431f0e
+user:        krok
+date:        Tue Jul 28 08:09:51 2015 +0300
+files:       db
+description:
+work
+
+
+changeset:   114:552a0c11adef
+user:        krok
+date:        Fri Jul 24 16:44:15 2015 +0300
+files:       db gen/views.py
+description:
+work
+
+
+changeset:   113:8d36a61c9c2f
+user:        krok
+date:        Fri Jul 17 16:49:24 2015 +0300
+files:       todo
+description:
+work
+
+
+changeset:   112:b9a195c9705f
+user:        krok
+date:        Thu Jul 16 16:56:44 2015 +0300
+files:       db gen/views.py todo
+description:
+work
+
+
+changeset:   111:27dc91c2bcce
+user:        krok
+date:        Thu Jul 16 08:03:30 2015 +0300
+files:       gen/urls.py gen/views.py mdvs/templs/copyspec.html mdvs/templs/proj.html
+description:
+work
+
+
+changeset:   110:dcc5c93d96a2
+user:        krok
+date:        Tue Jul 14 16:46:10 2015 +0300
+files:       db gen/views.py mdvs/templs/proj.html
+description:
+work
+
+
+changeset:   109:6203c698796c
+user:        krok
+date:        Mon Jul 13 16:57:40 2015 +0300
+files:       db gen/genvr.py todo
+description:
+work
+
+
+changeset:   108:142c7477e135
+user:        krok
+date:        Fri Jul 10 16:58:31 2015 +0300
+files:       db gen/genvr.py gen/urls.py gen/views.py mdvs/templs/zavod.html mdvs/templs/zavoded.html todo
+description:
+work
+
+
+changeset:   107:f38889b0306b
+user:        krok
+date:        Thu Jul 09 16:56:51 2015 +0300
+files:       db gen/views.py todo
+description:
+work
+
+
+changeset:   106:4529f0f5143b
+user:        krok
+date:        Wed Jul 08 16:53:51 2015 +0300
+files:       db mdvs/static/item.js mdvs/templs/projitem.html
+description:
+work
+
+
+changeset:   105:d43fd63b016e
+user:        krok
+date:        Wed Jul 08 08:10:03 2015 +0300
+files:       db
+description:
+work
+
+
+changeset:   104:34d29e153d07
+user:        krok
+date:        Fri Jul 03 16:51:24 2015 +0300
+files:       db
+description:
+work
+
+
+changeset:   103:e5040e4aad22
+user:        krok
+date:        Thu Jul 02 16:50:41 2015 +0300
+files:       db mdvs/static/icon_addlink.gif
+description:
+work
+
+
+changeset:   102:c6003ed8d183
+user:        krok
+date:        Tue Jun 30 08:05:49 2015 +0300
+files:       db todo
+description:
+work
+
+
+changeset:   101:afec19198f32
+user:        krok
+date:        Fri Jun 26 16:56:56 2015 +0300
+files:       db mdvs/static/item.js mdvs/static/projitems.js mdvs/templs/projitem.html todo
+description:
+work
+
+
+changeset:   100:686737b270e7
+user:        krok
+date:        Thu Jun 11 15:57:24 2015 +0300
+files:       db
+description:
+work
+
+
+changeset:   99:d2c562616710
+user:        krok
+date:        Wed Jun 10 16:50:25 2015 +0300
+files:       db gen/genvr.py todo
+description:
+work
+
+
+changeset:   98:2f8b2bc2a84b
+user:        krok
+date:        Thu Apr 09 10:25:19 2015 +0300
+files:       db
+description:
+work
+
+
+changeset:   97:be5b964f203a
+user:        krok
+date:        Mon Mar 23 16:32:28 2015 +0300
+files:       db
+description:
+work
+
+
+changeset:   96:e5b7cfdbfeae
+user:        krok
+date:        Mon Mar 23 16:32:22 2015 +0300
+files:       .hgtags
+description:
+Added tag domoy01 for changeset 840262221a8f
+
+
+changeset:   95:840262221a8f
+tag:         domoy01
+user:        krok
+date:        Thu Mar 05 16:46:52 2015 +0300
+files:       db gen/urls.py gen/views.py mdvs/templs/projitem.html todo
+description:
+work
+
+
+changeset:   94:c72e40242556
+user:        krok
+date:        Wed Mar 04 16:54:10 2015 +0300
+files:       db gen/models.py mdvs/templs/projitem.html todo
+description:
+work
+
+
+changeset:   93:66c211f39eab
+user:        krok
+date:        Tue Mar 03 16:49:34 2015 +0300
+files:       db gen/genvr.py gen/models.py gen/urls.py mdvs/templs/projitem.html templateSO.docx todo
+description:
+SO
+
+
+changeset:   92:4fea07f05d57
+user:        krok
+date:        Mon Mar 02 16:55:31 2015 +0300
+files:       db gen/genvr.py todo
+description:
+work
+
+
+changeset:   91:9abb21838323
+user:        krok
+date:        Tue Feb 24 16:54:38 2015 +0300
+files:       db
+description:
+work
+
+
+changeset:   90:94ebb877fb9b
+user:        krok
+date:        Wed Feb 11 16:46:24 2015 +0300
+files:       db gen/views.py mdvs/templs/projitem.html todo
+description:
+work
+
+
+changeset:   89:d8d685ccd58d
+user:        krok
+date:        Tue Feb 10 16:56:25 2015 +0300
+files:       db
+description:
+work
+
+
+changeset:   88:0d6bd3c25ee8
+user:        krok
+date:        Mon Feb 09 16:50:47 2015 +0300
+files:       db gen/views.py mdvs/templs/in_use2.html mdvs/templs/itemed.html todo
+description:
+work
+
+
+changeset:   87:4720c06a9958
+user:        krok
+date:        Fri Feb 06 16:39:34 2015 +0300
+files:       db gen/views.py mdvs/templs/additem.html mdvs/templs/base.html mdvs/templs/form24950.html mdvs/templs/in_use.html mdvs/templs/item.html mdvs/templs/itemed.html mdvs/templs/main.html mdvs/templs/pipe.html mdvs/templs/pipeobj.html mdvs/templs/pipeobjed.html mdvs/templs/proj.html mdvs/templs/projed.html mdvs/templs/projitem.html mdvs/templs/projmenu.html mdvs/templs/tu.html mdvs/templs/tued.html mdvs/templs/type.html mdvs/templs/typeed.html mdvs/templs/zavod.html todo
+description:
+work
+
+
+changeset:   86:f3d614e5d8ac
+user:        krok
+date:        Thu Feb 05 16:42:01 2015 +0300
+files:       db mdvs/static/css/bootstrap-theme.css mdvs/static/css/bootstrap-theme.css.map mdvs/static/css/bootstrap-theme.min.css mdvs/static/css/bootstrap.css mdvs/static/css/bootstrap.css.map mdvs/static/css/bootstrap.min.css mdvs/static/fonts/glyphicons-halflings-regular.eot mdvs/static/fonts/glyphicons-halflings-regular.svg mdvs/static/fonts/glyphicons-halflings-regular.ttf mdvs/static/fonts/glyphicons-halflings-regular.woff mdvs/static/fonts/glyphicons-halflings-regular.woff2 mdvs/static/js/bootstrap.js mdvs/static/js/bootstrap.min.js mdvs/static/js/npm.js mdvs/templs/base.html mdvs/templs/projitem.html mdvs/templs/projmenu.html todo
+description:
+work
+
+
+changeset:   85:00910ccff135
+user:        krok
+date:        Wed Feb 04 16:48:38 2015 +0300
+files:       db gen/views.py todo
+description:
+work
+
+
+changeset:   84:cc8b43009873
+user:        krok
+date:        Tue Feb 03 16:57:27 2015 +0300
+files:       db gen/urls.py gen/views.py mdvs/templs/projitem.html
+description:
+work
+
+
+changeset:   83:5d63abe7e1a2
+user:        krok
+date:        Mon Feb 02 16:53:10 2015 +0300
+files:       gen/views.py
+description:
+work
+
+
+changeset:   82:135709065c16
+user:        krok
+date:        Fri Jan 30 16:44:03 2015 +0300
+files:       .hgtags
+description:
+Added tag VR_done for changeset 5c97d231ca12
+
+
+changeset:   81:5c97d231ca12
+tag:         VR_done
+user:        krok
+date:        Fri Jan 30 16:42:24 2015 +0300
+files:       gen/genvr.py
+description:
+work
+
+
+changeset:   80:1e1e1beb4356
+user:        krok
+date:        Thu Jan 29 16:48:09 2015 +0300
+files:       db gen/genvr.py
+description:
+work
+
+
+changeset:   79:54b1e94bfd8b
+user:        krok
+date:        Thu Jan 29 08:16:02 2015 +0300
+files:       gen/genvr.py
+description:
+work
+
+
+changeset:   78:885ac9c24166
+user:        krok
+date:        Tue Jan 27 11:09:00 2015 +0300
+files:       gen/genvr.py templateVR.docx
+description:
+work
+
+
+changeset:   77:3d4f607d70a8
+user:        krok
+date:        Tue Dec 30 16:56:46 2014 +0300
+files:       gost24950/views.py
+description:
+work
+
+
+changeset:   76:29a39947b45c
+user:        krok
+date:        Mon Dec 29 16:51:15 2014 +0300
+files:       db mdvs/templs/projitem.html
+description:
+work
+
+
+changeset:   75:155d5e1e0b90
+user:        krok
+date:        Fri Dec 26 16:51:48 2014 +0300
+files:       db gen/genvr.py
+description:
+work
+
+
+changeset:   74:7562812f4264
+user:        krok
+date:        Thu Dec 25 16:50:06 2014 +0300
+files:       db gen/genvr.py
+description:
+work
+
+
+changeset:   73:afce50254fc3
+user:        krok
+date:        Thu Aug 14 16:50:49 2014 +0400
+files:       db gen/genvr.py mdvs/templs/item.html mdvs/templs/projitem.html
+description:
+work
+
+
+changeset:   72:a447d87af6cd
+user:        krok
+date:        Wed Aug 13 16:55:43 2014 +0400
+files:       db mdvs/static/common.css mdvs/templs/projitem.html
+description:
+work
+
+
+changeset:   71:1486c29cea14
+user:        krok
+date:        Mon Jul 14 15:46:32 2014 +0400
+files:       db
+description:
+work
+
+
+changeset:   70:64ff0a705a01
+user:        krok
+date:        Wed Jul 09 10:59:52 2014 +0400
+files:       db
+description:
+work
+
+
+changeset:   69:41c600ea686a
+user:        krok
+date:        Thu Jun 05 16:52:46 2014 +0400
+files:       gen/genvr.py
+description:
+work
+
+
+changeset:   68:4155deb7b7a3
+user:        krok
+date:        Wed Jun 04 16:49:00 2014 +0400
+files:       gen/genvr.py templateVR.docx
+description:
+work
+
+
+changeset:   67:d12818545da0
+user:        krok
+date:        Mon Jun 02 16:52:14 2014 +0400
+files:       gen/genvr.py
+description:
+work
+
+
+changeset:   66:2f92a3b79684
+user:        krok
+date:        Fri May 30 16:34:12 2014 +0400
+files:       gen/genvr.py
+description:
+work
+
+
+changeset:   65:a0fea50b634a
+user:        krok
+date:        Thu May 29 16:51:40 2014 +0400
+files:       gen/genvr.py
+description:
+work
+
+
+changeset:   64:200bac45babe
+user:        krok
+date:        Wed May 28 16:54:37 2014 +0400
+files:       gen/.genvr.py.swo
+description:
+work
+
+
+changeset:   63:c9f4e67d6723
+user:        krok
+date:        Wed May 28 16:54:23 2014 +0400
+files:       .hgignore gen/.genvr.py.swo gen/genvr.py templateVR.docx
+description:
+work
+
+
+changeset:   62:eceb18a0df10
+user:        krok
+date:        Mon May 26 16:48:39 2014 +0400
+files:       db gen/genvr.py gen/models.py
+description:
+work
+
+
+changeset:   61:bac8688879a4
+user:        krok
+date:        Fri May 23 16:38:03 2014 +0400
+files:       db gen/genvr.py gen/views.py mdvs/templs/projitem.html
+description:
+work
+
+
+changeset:   60:7d8310ff0b02
+user:        krok
+date:        Tue May 20 08:09:47 2014 +0400
+files:       gen/__init__.pyc gen/models.pyc gen/urls.pyc gen/views.pyc gost24950/__init__.pyc gost24950/models.pyc gost24950/views.pyc mdvs/__init__.pyc mdvs/settings.pyc mdvs/urls.pyc mdvs/wsgi.pyc
+description:
+work
+
+
+changeset:   59:25981c2d85f4
+user:        krok
+date:        Tue May 20 08:08:34 2014 +0400
+files:       gen/models.py~ gen/urls.py~ gen/views.py~ gost24950/models.py~ gost24950/views.py~ mdvs/urls.py~
+description:
+work
+
+
+changeset:   58:492e4f65b340
+user:        krok
+date:        Mon May 19 16:53:22 2014 +0400
+files:       db gen/genvr.py gen/views.py gen/views.pyc gen/views.py~
+description:
+work
+
+
+changeset:   57:4d19b0661022
+user:        krok
+date:        Fri May 16 16:51:46 2014 +0400
+files:       db gen/genvr.py gen/models.py gen/models.pyc gen/models.py~
+description:
+work
+
+
+changeset:   56:ffb427a51048
+user:        krok
+date:        Fri May 16 08:06:25 2014 +0400
+files:       gen/genvr.py
+description:
+work
+
+
+changeset:   55:cc9acdc70b9d
+user:        krok
+date:        Thu May 15 08:54:35 2014 +0400
+files:       gen/genvr.py
+description:
+work
+
+
+changeset:   54:cacd360359be
+user:        krok
+date:        Fri Apr 04 16:54:58 2014 +0400
+files:       gen/genvr.py
+description:
+work
+
+
+changeset:   53:d546acb77059
+user:        krok
+date:        Thu Apr 03 16:35:18 2014 +0400
+files:       gen/genvr.py
+description:
+work
+
+
+changeset:   52:dddd52ae96b3
+user:        krok
+date:        Wed Apr 02 16:42:11 2014 +0400
+files:       db gen/genvr.py
+description:
+work
+
+
+changeset:   51:b3bebab1a547
+user:        krok
+date:        Tue Apr 01 16:44:15 2014 +0400
+files:       gen/genvr.py
+description:
+work
+
+
+changeset:   50:412ba0d1623f
+user:        krok
+date:        Mon Mar 31 16:54:07 2014 +0400
+files:       gen/genvr.py gen/models.py gen/models.pyc gen/models.py~
+description:
+work
+
+
+changeset:   49:8755ffc03b69
+user:        krok
+date:        Fri Mar 28 16:40:41 2014 +0400
+files:       db gen/genvr.py
+description:
+work
+
+
+changeset:   48:0048339736a8
+user:        krok
+date:        Thu Mar 27 16:54:22 2014 +0400
+files:       .hgignore db gen/genvr.py gen/models.py gen/models.pyc gen/views.pyc gen/views.py~
+description:
+work
+
+
+changeset:   47:8af7153e0c10
+user:        krok
+date:        Wed Mar 26 16:34:14 2014 +0400
+files:       .hgignore db gen/genvr.py gen/urls.py gen/urls.pyc gen/urls.py~ gen/views.pyc mdvs/templs/projitem.html
+description:
+work
+
+
+changeset:   46:e9874f39f1b3
+user:        krok
+date:        Wed Mar 26 08:13:41 2014 +0400
+files:       gen/views.py
+description:
+work
+
+
+changeset:   45:06deb4e29d23
+user:        krok
+date:        Tue Mar 25 16:10:47 2014 +0400
+files:       .hgtags
+description:
+Added tag vvod dannih - done for changeset 68ea26d0b7ab
+
+
+changeset:   44:68ea26d0b7ab
+tag:         vvod dannih - done
+user:        krok
+date:        Tue Mar 25 16:10:07 2014 +0400
+files:       db gen/urls.py gen/urls.pyc gen/urls.py~ gen/views.py gen/views.pyc gen/views.py~ mdvs/templs/projitem.html
+description:
+work
+
+
+changeset:   43:01bcf69f7a34
+user:        krok
+date:        Mon Mar 24 16:58:51 2014 +0400
+files:       db gen/urls.py gen/urls.pyc gen/urls.py~ gen/views.py gen/views.pyc gen/views.py~ mdvs/templs/additem.html mdvs/templs/projitem.html
+description:
+work
+
+
+changeset:   42:e9112e93287c
+user:        krok
+date:        Fri Mar 21 16:49:25 2014 +0400
+files:       db gen/views.py gen/views.pyc gen/views.py~ mdvs/templs/projitem.html
+description:
+work
+
+
+changeset:   41:7427c71341b1
+user:        krok
+date:        Thu Mar 20 16:56:38 2014 +0400
+files:       db gen/models.py gen/models.pyc gen/models.py~ gen/urls.py gen/urls.pyc gen/views.py gen/views.pyc gen/views.py~ mdvs/static/item.js mdvs/templs/item.html mdvs/templs/item.html~ mdvs/templs/projitem.html
+description:
+work
+
+
+changeset:   40:f0b50115e0df
+user:        krok
+date:        Wed Mar 19 16:56:03 2014 +0400
+files:       db gen/models.py gen/models.pyc gen/views.pyc
+description:
+work
+
+
+changeset:   39:f44d1e760363
+user:        krok
+date:        Mon Mar 17 16:45:14 2014 +0400
+files:       .hgignore db gen/urls.pyc gen/views.py gen/views.pyc gen/views.py~
+description:
+work
+
+
+changeset:   38:46a157ad0b6f
+user:        krok
+date:        Fri Mar 14 16:53:05 2014 +0400
+files:       gen/.models.py.swp gen/.urls.py.swp gen/.views.py.swp
+description:
+work
+
+
+changeset:   37:60c54a4196ee
+user:        krok
+date:        Fri Mar 14 14:05:29 2014 +0400
+files:       .hgtags
+description:
+Added tag 0.01 for changeset 2a91e97a3c3a
+
+
+changeset:   36:2a91e97a3c3a
+tag:         0.01
+user:        krok
+date:        Fri Mar 14 14:04:52 2014 +0400
+files:       db gen/.models.py.swp gen/.urls.py.swp gen/.views.py.swp gen/models.py gen/models.pyc gen/models.py~ gen/urls.py gen/urls.pyc gen/urls.py~ gen/views.py gen/views.pyc gen/views.py~ gost24950/views.py gost24950/views.pyc gost24950/views.py~ mdvs/static/LSrezki.PNG mdvs/static/LSrezki.bmp mdvs/static/kotlovan.PNG mdvs/static/kotlovan.bmp mdvs/static/progal.PNG mdvs/static/progal.bmp mdvs/templs/1.html mdvs/templs/form24950.html mdvs/templs/itemed.html mdvs/templs/pipe.html mdvs/templs/pipeobj.html mdvs/templs/pipeobjed.html mdvs/templs/proj.html mdvs/templs/projed.html mdvs/templs/tu.html mdvs/templs/tued.html mdvs/templs/type.html mdvs/templs/typeed.html mdvs/templs/zavod.html
+description:
+work
+
+
+changeset:   35:d7066958215f
+user:        krok
+date:        Thu Mar 13 16:51:42 2014 +0400
+files:       db mdvs/settings.py mdvs/settings.pyc mdvs/static/common.css mdvs/static/item.js mdvs/templs/base.html mdvs/templs/item.html mdvs/templs/item_old.html
+description:
+work
+
+
+changeset:   34:6f3ac257e895
+user:        krok
+date:        Wed Mar 12 16:41:22 2014 +0400
+files:       mdvs/templs/base.html mdvs/templs/item.html mdvs/templs/item.html~
+description:
+work
+
+
+changeset:   33:7489b06a846e
+user:        krok
+date:        Tue Mar 11 16:42:25 2014 +0400
+files:       gen/views.py gen/views.pyc gen/views.py~ mdvs/static/item.js mdvs/static/jquery-1.11.0.min.js mdvs/templs/1.html mdvs/templs/base.html mdvs/templs/item.html mdvs/templs/item.html~ mdvs/templs/item_old.html mdvs/templs/projmenu.html
+description:
+work
+
+
+changeset:   32:9c33206a8daf
+user:        krok
+date:        Tue Mar 11 08:14:03 2014 +0400
+files:       mdvs/templs/1.html mdvs/templs/item.html mdvs/templs/projmenu.html
+description:
+work
+
+
+changeset:   31:98885af67893
+user:        krok
+date:        Fri Mar 07 08:37:58 2014 +0400
+files:       gen/views.pyc mdvs/settings.py mdvs/settings.pyc mdvs/static/LSrezki.bmp mdvs/static/item.js mdvs/static/kotlovan.bmp mdvs/static/progal.bmp mdvs/templs/1.html mdvs/templs/form24950.html mdvs/templs/item.html mdvs/templs/itemed.html mdvs/templs/main.html mdvs/templs/pipe.html mdvs/templs/pipeobj.html mdvs/templs/pipeobjed.html mdvs/templs/proj.html mdvs/templs/projmenu.html mdvs/templs/tu.html mdvs/templs/tued.html mdvs/templs/type.html mdvs/templs/typeed.html mdvs/templs/zavod.html mdvs/urls.py mdvs/urls.pyc static/LSrezki.bmp static/kotlovan.bmp static/progal.bmp templs/1.html templs/form24950.html templs/item.html templs/itemed.html templs/main.html templs/pipe.html templs/pipeobj.html templs/pipeobjed.html templs/proj.html templs/projmenu.html templs/tu.html templs/tued.html templs/type.html templs/typeed.html templs/zavod.html
+description:
+work
+
+
+changeset:   30:0e22280238d7
+user:        krok
+date:        Tue Mar 04 16:25:05 2014 +0400
+files:       db gen/models.py gen/models.pyc gen/models.py~ gen/views.py gen/views.pyc gen/views.py~ templs/item.html templs/itemed.html
+description:
+work
+
+
+changeset:   29:b2642035de5a
+user:        krok
+date:        Mon Mar 03 16:50:38 2014 +0400
+files:       db gen/models.py gen/models.pyc gen/urls.py gen/urls.pyc gen/urls.py~ gen/views.py gen/views.pyc gen/views.py~ templs/item.html templs/projmenu.html
+description:
+work
+
+
+changeset:   28:26ff5526ed61
+user:        krok
+date:        Fri Feb 28 16:46:01 2014 +0400
+files:       db gen/models.py gen/models.pyc gen/models.py~ gen/urls.py gen/urls.pyc gen/urls.py~ gen/views.py gen/views.pyc gen/views.py~ templs/projmenu.html templs/tu.html templs/tued.html
+description:
+tu_complete
+
+
+changeset:   27:a36cfc6a8ae2
+user:        krok
+date:        Thu Feb 27 16:42:40 2014 +0400
+files:       db gen/models.py gen/models.pyc gen/models.py~ gen/urls.py gen/urls.pyc gen/urls.py~ gen/views.py gen/views.pyc gen/views.py~ templs/projmenu.html templs/type.html templs/typeed.html
+description:
+work
+
+
+changeset:   26:874fad6a5377
+user:        krok
+date:        Thu Feb 27 08:06:33 2014 +0400
+files:       db gen/models.py gen/models.pyc gen/models.py~ gen/urls.py gen/urls.pyc gen/urls.py~ gen/views.py gen/views.pyc gen/views.py~ gost24950/views.py gost24950/views.pyc gost24950/views.py~ mdvs/settings.py mdvs/settings.pyc mdvs/urls.py mdvs/urls.pyc mdvs/urls.py~ templs/1.html templs/form24950.html templs/pipe.html templs/pipeobj.html templs/pipeobjed.html templs/proj.html templs/projmenu.html templs/zavod.html
+description:
+work
+
+
+changeset:   25:649934febd23
+user:        krok
+date:        Tue Feb 25 08:30:46 2014 +0400
+files:       db gost24950/views.py gost24950/views.pyc gost24950/views.py~
+description:
+work
+
+
+changeset:   24:79e4b607f84a
+user:        krok
+date:        Mon Feb 24 08:06:57 2014 +0400
+files:       db gost24950/views.py gost24950/views.pyc gost24950/views.py~ mdvs/urls.py mdvs/urls.pyc templs/pipeobjed.html
+description:
+work
+
+
+changeset:   23:99a411ce809f
+user:        krok
+date:        Fri Feb 21 09:01:37 2014 +0400
+files:       db gost24950/views.py gost24950/views.pyc gost24950/views.py~ mdvs/urls.py mdvs/urls.pyc templs/pipeobj.html templs/pipeobjed.html
+description:
+work
+
+
+changeset:   22:8fcb7a8e815e
+user:        krok
+date:        Thu Feb 20 10:18:08 2014 +0400
+files:       .hgignore
+description:
+work
+
+
+changeset:   21:e055c0661402
+user:        krok
+date:        Thu Feb 20 10:16:39 2014 +0400
+files:       .hgtags
+description:
+Added tag stable for changeset 7eb7a0a300c7
+
+
+changeset:   20:7eb7a0a300c7
+tag:         stable
+user:        krok
+date:        Wed Feb 19 16:50:56 2014 +0400
+files:       db gen/models.py gen/models.pyc gen/models.py~ gen/urls.py gen/urls.pyc gen/urls.py~
+description:
+work
+
+
+changeset:   19:740a51515507
+user:        krok
+date:        Wed Dec 25 16:50:34 2013 +0400
+files:       db gen/__init__.pyc gen/models.pyc gen/urls.py gen/urls.pyc gen/urls.py~ gen/views.py gen/views.pyc gen/views.py~ gost24950/views.py gost24950/views.pyc gost24950/views.py~ mdvs/settings.py mdvs/settings.pyc mdvs/urls.py mdvs/urls.pyc mdvs/urls.py~ templs/proj.html
+description:
+work
+
+
+changeset:   18:002928badc62
+user:        krok
+date:        Wed Dec 25 15:09:56 2013 +0400
+files:       gen/views.py gen/views.py~ templs/proj.html
+description:
+work
+
+
+changeset:   17:c0616ac31ae3
+user:        krok
+date:        Fri Dec 20 10:31:23 2013 +0400
+files:       gen/views.py gen/views.py~
+description:
+work
+
+
+changeset:   16:6cef67208fd1
+user:        krok
+date:        Wed Dec 18 15:44:16 2013 +0400
+files:       gen/views.py gen/views.py~
+description:
+work
+
+
+changeset:   15:1634f9b7eef4
+user:        krok
+date:        Fri Dec 06 13:44:37 2013 +0400
+files:       db templs/pipe.html
+description:
+work
+
+
+changeset:   14:6189321196de
+user:        krok
+date:        Tue Nov 19 16:48:47 2013 +0400
+files:       db gost24950/views.py gost24950/views.pyc gost24950/views.py~ mdvs/urls.py mdvs/urls.pyc mdvs/urls.py~ templs/form24950.html templs/main.html
+description:
+work
+
+
+changeset:   13:897e81db5f6a
+user:        krok
+date:        Sun Nov 10 11:38:59 2013 +0400
+files:       gen/models.py gen/models.py~ gen/views.py gen/views.py~
+description:
+work
+
+
+changeset:   12:ef4696b10d30
+user:        krok
+date:        Wed Nov 06 16:50:04 2013 +0400
+files:       db gen/__init__.py gen/models.py gen/tests.py gen/views.py gost24950/views.py gost24950/views.pyc gost24950/views.py~ mdvs/urls.py mdvs/urls.pyc mdvs/urls.py~
+description:
+work
+
+
+changeset:   11:3c18df380a83
+user:        krok
+date:        Mon Oct 28 08:06:37 2013 +0400
+files:       .hgignore
+description:
+work
+
+
+changeset:   10:51ca57da88cf
+user:        krok
+date:        Mon Oct 28 08:04:28 2013 +0400
+files:       db gost24950/views.py gost24950/views.pyc gost24950/views.py~ templs/pipeobj.html
+description:
+work
+
+
+changeset:   9:f114d76f4238
+user:        krok
+date:        Sat Oct 26 08:21:49 2013 +0400
+files:       db gost24950/views.py gost24950/views.pyc gost24950/views.py~ mdvs/urls.py mdvs/urls.pyc mdvs/urls.py~ templs/pipeobj.html
+description:
+work
+
+
+changeset:   8:cb5de2bc3c52
+user:        krok
+date:        Fri Oct 25 08:06:03 2013 +0400
+files:       db gost24950/models.py gost24950/models.pyc gost24950/models.py~ gost24950/views.py gost24950/views.pyc gost24950/views.py~ mdvs/urls.py mdvs/urls.pyc mdvs/urls.py~ templs/pipe.html templs/pipeobj.html
+description:
+work
+
+
+changeset:   7:f1302bfb1b94
+user:        krok
+date:        Wed Oct 23 15:23:17 2013 +0400
+files:       gost24950/.models.py.swp gost24950/models.py gost24950/models.py~ gost24950/views.py gost24950/views.py~
+description:
+work
+
+
+changeset:   6:a7c36578a7eb
+user:        krok
+date:        Tue Oct 22 08:02:20 2013 +0400
+files:       db gost24950/.models.py.swp gost24950/models.py gost24950/models.pyc gost24950/models.py~ gost24950/views.py gost24950/views.pyc gost24950/views.py~ mdvs/settings.py mdvs/settings.pyc
+description:
+work
+
+
+changeset:   5:e9356178e37f
+user:        krok
+date:        Fri Oct 18 16:54:18 2013 +0400
+files:       gost24950/gaztu gost24950/views.py gost24950/views.pyc gost24950/views.py~ mdvs/urls.py mdvs/urls.pyc static/progal.bmp
+description:
+work
+
+
+changeset:   4:ede493c5f94c
+user:        krok
+date:        Thu Oct 17 16:51:57 2013 +0400
+files:       gost24950/views.py gost24950/views.pyc gost24950/views.py~ mdvs/settings.py mdvs/settings.pyc mdvs/urls.py mdvs/urls.pyc static/LSrezki.bmp static/kotlovan.bmp templs/form24950.html templs/main.html
+description:
+work
+
+
+changeset:   3:2d5671933ac1
+user:        krok
+date:        Wed Oct 16 16:48:03 2013 +0400
+files:       gost24950/urls.py gost24950/urls.pyc gost24950/views.py gost24950/views.pyc gost24950/views.py~ main/__init__.py main/__init__.pyc main/models.py main/models.pyc main/tests.py main/urls.py main/urls.pyc main/views.py main/views.pyc mdvs/settings.py mdvs/settings.pyc mdvs/urls.py mdvs/urls.pyc templs/form24950.html templs/main.html
+description:
+work
+
+
+changeset:   2:a62383c06787
+user:        krok
+date:        Wed Oct 16 08:06:27 2013 +0400
+files:       gost24950/urls.pyc mdvs/urls.py mdvs/urls.pyc
+description:
+work
+
+
+changeset:   1:84e8b276fe79
+user:        krok
+date:        Tue Oct 15 15:41:18 2013 +0400
+files:       gost24950/.views.py.swp gost24950/views.pyc gost24950/views.py~ main/__init__.py main/__init__.pyc main/models.py main/models.pyc main/tests.py main/urls.py main/urls.pyc main/views.py main/views.pyc mdvs/settings.py mdvs/settings.pyc mdvs/urls.py mdvs/urls.pyc templs/main.html
+description:
+add main page
+
+
+changeset:   0:8a560435a473
+user:        krok
+date:        Tue Oct 15 13:47:35 2013 +0400
+files:       gost24950/.views.py.swp gost24950/__init__.py gost24950/__init__.pyc gost24950/models.py gost24950/models.pyc gost24950/tests.py gost24950/urls.py gost24950/urls.pyc gost24950/views.py gost24950/views.pyc gost24950/views.py~ manage.py mdvs/__init__.py mdvs/__init__.pyc mdvs/settings.py mdvs/settings.pyc mdvs/urls.py mdvs/urls.pyc mdvs/wsgi.py mdvs/wsgi.pyc templs/form24950.html
+description:
+day 2
+
+

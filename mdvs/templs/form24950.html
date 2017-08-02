@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1> {{ form.title }} </h1>
+<form action={% url form.action %} method="post">  {% csrf_token %} 
+<table class="table">
+{{ form.as_table }}
+{% for k,v in form.ans %}
+<tr><th><label>{{ v }}</label></th><td><label>{{ k }} </label></td></tr>
+{% endfor %}
+</table>
+<input type="submit" value="Расчет" />
+</form>
+{% if form.pic %}
+{%load staticfiles %}
+<img src="{% static form.pic %}" alt="" title=""/>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block head %}
+{% load staticfiles %}
+<script type="text/javascript" src={% static "item.js" %}></script>
+<script type="text/javascript" src={% static "angular.js" %}></script>
+{% endblock %}
+
+{%block oglav %}
+{% include "projmenu.html" %}
+<a class="btn btn-primary" role="button" href={% url 'gen_VR' spec_id %}>Создать ведомость объемов работ</a>
+<a class="btn btn-primary" role="button" href={% url 'gen_SO' spec_id %}>Создать спецификацию оборудования</a>
+{% endblock %}
+
+{% block content %}
+<h1>Работа со спецификацией: {{ s.name }}</h1>
+
+<h2>Детали в спецификации</h2>
+{% if p %}
+<table>
+<tr><th>№ п/п</th><th>Всего</th><th>Под.</th><th>Над.</th><th>Название детали</th><th></th><th></th></tr>
+{% for k in p %}
+<tr class="{% cycle 'row2' 'row1'%}"><td>{{ forloop.counter }}</td><td style="font-weight:bold">{{ k.numAll|floatformat }}</td><td>{% if k.numPod > 0 %} {{ k.numPod|floatformat }} {% endif %}</td><td>{% if k.numNad > 0 %} {{ k.numNad|floatformat }} {% endif %}</td><td><a href={% url 'show_ItemEd' k.item.id spec_id %}>{{ k.item }}</a></td><td><a class="btn btn-warning btn-xs" role="button" href={% url 'ChangeNumItems' spec_id k.id %}>Изменить</a></td><td><a class="btn btn-danger btn-xs" role="button" href={% url 'DelItem' spec_id k.id %}>Удалить</a></td></tr>
+{% endfor %}                                                                                    
+</table>
+{% endif %}
+
+<div>
+<h2>Детали для добавления в спецификацию</h2>
+<a id='filter'></a>
+<table><tr><td><h4>Фильтр деталей тип: </h4></td><td><a class="btn {% if ftype == 0 %} btn-success {% else %} btn-primary {% endif %} btn-sm" role="button" href={% url 'ItemsFilterType' spec_id 0 %}>Все</a></td>{% for k in it %}<td><a class="btn {% if ftype == k.id %} btn-success {% else %} btn-primary {% endif %} btn-sm" role="button" href={% url 'ItemsFilterType' spec_id k.id %}>{{ k.name }}</a><td>{% endfor %}</tr></table> 
+<table><tr><td><h4>Фильтр деталей Ду: </h4></td><td><a class="btn {% if fdy == 0 %} btn-success {% else %} btn-primary {% endif %} btn-sm" role="button" href={% url 'ItemsFilterDY' spec_id 0 %}>Все</a></td>{% for k,v in ady %}<td><a class="btn {% if fdy == k %} btn-success {% else %} btn-primary {% endif %} btn-sm" role="button" href={% url 'ItemsFilterDY' spec_id k %}>{{ k }}</a><td>{% endfor %}</tr></table>
+{% if i %}
+<table id="ItemsToAdd">
+{% for k in i %}
+<tr><td><a class="btn btn-success btn-xs" role="button" href={% url 'show_AddItemForm' spec_id k.id %}>Добавить</a></td><td><a href={% url 'show_ItemEd' k.id spec_id %}>{{ k.name }}</a></td></tr>
+{% endfor %}
+</table>
+{% endif %}
+</div>
+
+<script>
+// Create a module to support our shopping views
+var app = angular.module('myApp', []);
+app.controller('signupController', function($scope) {
+    $scope.submitted = false;
+    $scope.signupForm = function() {
+        if ($scope.signup_form.$valid) { // Submit as normal
+        }
+        else { $scope.signup_form.submitted = true; } }
+});
+</script>
+{% endblock %}

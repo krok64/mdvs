@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1> {{ form.title }} </h1>
+<div class="row">
+  <div class="col-xs-6">
+    <h2>Выберите трассу:</h2>
+    {% if p %}
+    <table class="table">
+    {% for k in p %}
+    <tr><th><a href="/pipe/select/{{ k.id }}/">{{ k.name }}</a></th><td>Ду {{ k.dy }}</td><td><a class="btn btn-danger btn-xs" role="button" href="/pipe/delete/{{ k.id }}/">Удалить</a></td></tr>
+    {% endfor %}
+    </table>
+    {% endif %}
+  </div>
+  <div class="col-xs-6">
+    <h2>Добавить трассу:</h2>
+    <form action="" method="post">  {% csrf_token %} 
+    <table class="table">
+    {{ form.as_table }}
+    </table>
+    <input type="submit" value="Добавить трассу" />
+    </form>
+  </div>
+</div>
+{% endblock %}

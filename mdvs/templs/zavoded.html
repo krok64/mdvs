@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{%block head %}
+<style type="text/css">
+#id_name { color: green; width: 100%; }
+</style>
+{% endblock %}
+
+{%block oglav %}
+{% include "projmenu.html" %}
+{% endblock %}
+
+{% block content %}
+<h1> {{ form.title }} </h1>
+<form action="" method="post">  {% csrf_token %} 
+<table class="table">
+{{ form.as_table }}
+</table>
+<input type="submit" value="Переименовать" />
+</form>
+{% endblock %}

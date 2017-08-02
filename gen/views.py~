@@ -1,0 +1,224 @@
+# -*- coding: utf-8 -*-
+
+from django import forms
+from django.forms import ModelForm
+from django.shortcuts import render, redirect
+from gen.models import * 
+
+def show_SQL(request):
+    from django.db import connection, transaction
+    cursor = connection.cursor()
+
+    # Data modifying operation - commit required
+    #cursor.execute("DROP TABLE gen_item")
+    #transaction.commit_unless_managed()
+    return redirect('gen.views.show_Proj')
+
+def ChangeNumItems(request, s_id, l_id):
+    p=ItemList.objects.get(pk=l_id)    
+    if request.method=='POST':
+        form=AddItemForm(request.POST)
+        if form.is_valid():
+           numAll=form.cleaned_data['numAll']
+           if numAll>0:
+                p.numAll=numAll
+                p.numPod=form.cleaned_data['numPod']
+                p.numNad=form.cleaned_data['numNad']
+                p.isHydroIsp=form.cleaned_data['isHydro']
+                p.save()
+           return redirect('show_ProjItems', s_id)
+    data={'numAll': p.numAll,
+          'numPod': p.numPod,
+          'numNad': p.numNad,
+          'isHydro': p.isHydroIsp }
+    form=AddItemForm(data)
+    d=p.item
+    return render(request,'additem.html',{'form':form, 'd':d})
+
+def DelItem(request, s_id, l_id):
+    l=ItemList.objects.get(pk=l_id)
+    l.delete()
+    return redirect('show_ProjItems', s_id)
+
+class AddItemForm(forms.Form):
+    title='Добавть деталь в спецификацию'    
+    numAll=forms.FloatField(label='Всего',required=True,initial=0)
+    numPod=forms.FloatField(label='Подземная часть',required=True,initial=0)
+    numNad=forms.FloatField(label='Надземная часть',required=True,initial=0)
+    isHydro=forms.BooleanField(label='Учитывать в гидроиспытаниях',required=True,initial=True)
+    def clean(self):
+        cleaned_data=super(AddItemForm, self).clean()
+        numAll=float(cleaned_data.get("numAll"))
+        numPod=float(cleaned_data.get("numPod"))
+        numNad=float(cleaned_data.get("numNad"))
+        if abs(numAll-(numPod+numNad))>0.00001:
+            cleaned_data["numAll"]=numPod+numNad
+#            raise forms.ValidationError("Общее количество должно совпадать с суммой подземной и надземной части")                
+        return cleaned_data
+
+def show_AddItemForm(request, s_id, d_id):
+    if request.method=='POST':
+        form=AddItemForm(request.POST)
+        if form.is_valid():
+           numAll=form.cleaned_data['numAll']
+           if numAll>0:
+                s=Spec.objects.get(pk=s_id)
+                d=Item.objects.get(pk=d_id)
+                numPod=form.cleaned_data['numPod']
+                numNad=form.cleaned_data['numNad']
+                isHydro=form.cleaned_data['isHydro']
+                p=ItemList(item=d,spec=s,numAll=numAll,numPod=numPod,numNad=numNad,isHydroIsp=isHydro)
+                p.save()
+           return redirect('show_ProjItems', s_id)
+    else:
+        form=AddItemForm()
+    d=Item.objects.get(pk=d_id)
+    return render(request,'additem.html',{'form':form, 'd':d})
+
+def show_ProjItems(request, id):
+    i=Item.objects.order_by('name')
+    s=Spec.objects.get(pk=id)
+    p=ItemList.objects.filter(spec=s)
+    return render(request,'projitem.html',{'p':p, 'i':i, 'spec_id':id, 's':s})
+
+class ProjForm(ModelForm):
+    title='Выбор проекта'
+    class Meta:
+        model=Spec
+
+def show_Proj(request, id=None):
+    if request.method=='POST':
+        form=ProjForm(request.POST)
+        if form.is_valid():
+            form.save()
+            form=ProjForm()
+    else:
+        form=ProjForm()
+    if id<>None:
+        p=Spec.objects.get(pk=id)
+        p.delete()
+    p=Spec.objects.order_by('name')
+    return render(request,'proj.html',{'form':form, 'p':p})
+
+def show_ProjEd(request, id):
+    p=Spec.objects.get(pk=id)
+    if request.method=='POST':
+        form=ProjForm(request.POST, instance=p)
+        if form.is_valid():
+            form.save()
+            return redirect('show_Proj')
+    else:
+        form=ProjForm(instance=p)
+    return render(request,'projed.html',{'form':form})
+
+class ItemForm(ModelForm):
+    title='Детали'        
+    class Meta:
+        model=Item
+
+def show_Item(request, id=None):
+    if request.method=='POST':
+        form=ItemForm(request.POST)
+        if form.is_valid():
+            form.save()
+            form=ItemForm()
+    else:
+        form=ItemForm()
+    if id<>None:
+        p=Item.objects.get(pk=id)
+        p.delete()
+    p=Item.objects.order_by('name')
+    t=ItemType.objects.all()
+    return render(request,'item.html',{'form':form, 'p':p, 't':t})
+
+def show_ItemEd(request, id):
+    p=Item.objects.get(pk=id)
+    if request.method=='POST':
+        form=ItemForm(request.POST, instance=p)
+        if form.is_valid():
+            form.save()
+            return redirect('show_Item')
+    else:
+        form=ItemForm(instance=p)
+    return render(request,'itemed.html',{'form':form})
+
+class TUForm(ModelForm):
+    title="Список ТУ и ГОСТ на детали"
+    class Meta:
+        model=TU            
+
+def show_TU(request, id=None):
+    if request.method=='POST':
+        form=TUForm(request.POST)
+        if form.is_valid():
+            form.save()
+            form=TUForm()
+    else:
+        form=TUForm()
+    if id<>None:
+        p=TU.objects.get(pk=id)
+        p.delete()
+    p=TU.objects.order_by('name')
+    return render(request,'tu.html',{'form':form, 'p':p})
+
+def show_TUEd(request, id):
+    p=TU.objects.get(pk=id)
+    if request.method=='POST':
+        form=TUForm(request.POST, instance=p)
+        if form.is_valid():
+            form.save()
+            return redirect('show_TU')
+    else:
+        form=TUForm(instance=p)
+    return render(request,'tued.html',{'form':form})
+
+class TypeForm(ModelForm):
+    title="Список типов деталей"
+    class Meta:
+        model=ItemType            
+
+def show_Type(request, id=None):
+    if request.method=='POST':
+        form=TypeForm(request.POST)
+        if form.is_valid():
+            form.save()
+            form=TypeForm()
+    else:
+        form=TypeForm()
+    if id<>None:
+        p=ItemType.objects.get(pk=id)
+        p.delete()
+    p=ItemType.objects.order_by('name')
+    return render(request,'type.html',{'form':form, 'p':p})
+
+def show_TypeEd(request, id):
+    p=ItemType.objects.get(pk=id)
+    if request.method=='POST':
+        form=TypeForm(request.POST, instance=p)
+        if form.is_valid():
+            form.save()
+            return redirect('show_Type')
+    else:
+        form=TypeForm(instance=p)
+    return render(request,'typeed.html',{'form':form})
+
+class ZavodForm(ModelForm):
+    title="Список предприятий"
+    class Meta:
+        model=Zavod
+
+def show_Zavod(request, id=None):
+    if request.method=='POST':
+        form=ZavodForm(request.POST)
+        if form.is_valid():
+            p=Zavod(name=form.cleaned_data['name'])
+            p.save()
+            form=ZavodForm()
+    else:
+        form=ZavodForm()
+    if id<>None:
+        p=Zavod.objects.get(pk=id)
+        p.delete()
+    p=Zavod.objects.order_by('name')
+    return render(request,'zavod.html',{'form':form, 'p':p})
+        

@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block head %}
+{% load staticfiles %}
+<script type="text/javascript" src={% static "item.js" %}></script>
+{% endblock %}
+
+{%block oglav %}
+{% include "projmenu.html" %}
+{% endblock %}
+
+{% block content %}
+<div class="row">
+  <div class="col-xs-8">
+    <h1>Детали</h1>
+    {% if p %}
+    <table>
+    {% for k in p %}
+    <tr><td class="{% cycle 'row1' 'row2' as rs %}">{{ k.name }}</td><td class="{{ rs }}"><a class="btn btn-warning btn-xs" role="button" href={% url 'show_ItemEd' k.id %}>Изменить</a></td><td class="{{ rs }}"><a class="btn btn-warning btn-xs" role="button" href={% url 'copyItem' k.id %}>Копировать</a></td><td class="{{ rs }}"><a class="btn btn-danger btn-xs" role="button" href={% url 'show_Item' k.id %}>Удалить</a></td></tr>
+    {% endfor %}
+    </table>
+    {% endif %}
+  </div>
+  <div class="col-xs-4">
+    <h1>Создать деталь</h1>
+    <form action={% url 'show_Item' %} method="post">  {% csrf_token %} 
+    <table class="table">
+    {{ form.as_table }}
+    </table>
+    <input type="submit" value="Добавить" />
+    </form>
+    <dl>
+  </div>
+{% for k in t %}
+</div>
+<div id="{{ k.id }}" class="hidden">
+{{k.is_dlina}},{{k.is_visota}},{{k.is_m}},{{k.is_s}},{{k.is_d}},{{k.is_dy}},{{k.is_d2}},{{k.is_s2}},{{k.is_privod}},{{k.is_ust}},False
+</div>
+{% endfor %}
+{% endblock %}
