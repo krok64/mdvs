@@ -1,8 +1,12 @@
 # -*- coding: utf-8 -*-
 
+import os
+from math import pi, tan, radians, sqrt, atan, degrees, cos
+
 from django import forms
 from django.shortcuts import render, redirect
-from math import pi, tan, radians, sqrt, atan, degrees, cos
+from django.conf import settings
+
 from gost24950.models import Pipe, Obj
 from mdv_u.utils import FloatField2
 
@@ -153,7 +157,7 @@ def show_GazTU(request):
             ug=form.cleaned_data['ug']
             d=form.cleaned_data['d']
             k=dlist[d]['col']
-            f=open('/var/www/mdvs/gost24950/gaztu','r')
+            f = open(os.path.join(settings.BASE_DIR, 'gost24950', 'gaztu'), 'r')
             for line in f:
                 if ug==int(line.split()[0]):
                     A=int(line.split()[k])
@@ -625,8 +629,8 @@ def main(request):
     l=[]
     for s in aps:
         f=s()
-        l.append((f.title,f.action))
+        l.append((f.title, f.action))
     l.append(('Генератор ВР и СО', 'show_Proj'))
-    l.append(('Переукладка и балластировка','show_Ballast'))
+    l.append(('Переукладка и балластировка', 'show_Ballast'))
     l.sort()
-    return render(request, 'main.html', {'l':l})
+    return render(request, 'main.html', {'l': l})

@@ -7,13 +7,13 @@ import numpy as np
 import matplotlib.pyplot as plt
 import re
 from math import pi, cos, ceil
-import sys
 import tempfile
 
 class BallastForm(forms.Form):
-    action='ballast.views.show_Ballast'    
+    action='show_Ballast'    
     title='Переукладка тубопровода с балластировкой'
-    data_file=forms.FileField(label='Файл описания объекта:',required=True)
+    data_file=forms.FileField(label='Файл описания объекта:', required=True)
+
 
 def show_Ballast(request):
     if request.method=='POST':
@@ -27,6 +27,7 @@ def show_Ballast(request):
     else:
         form=BallastForm()
     return render(request,'formballast.html', {'form':form})
+
 
 def get_k_n(d,p):
 #Значение коэффициента надежности по ответственности трубопровода kн для газопроводов (СП 36.13330.2012 табл. 12)
