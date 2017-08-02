@@ -56,7 +56,7 @@ def show_SQL(request):
     # Data modifying operation - commit required
     #cursor.execute("DROP TABLE gen_item")
     #transaction.commit_unless_managed()
-    return redirect('gen.views.show_Proj')
+    return redirect('show_Proj')
 
 
 def ChangeNumItems(request, s_id, l_id):
